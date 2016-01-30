@@ -4,6 +4,10 @@ public class CountdownTimer : MonoBehaviour
 {
     public float TimerStart;
 
+    public bool IsExpired
+    {
+        get { return (_timeRemaining < 0.01f); }
+    }
 
     private float _timeRemaining;
     private bool _messageDisplayed;
@@ -11,7 +15,6 @@ public class CountdownTimer : MonoBehaviour
     void Awake()
     {
         _timeRemaining = TimerStart;
-        _messageDisplayed = false;
     }
 
     void Update()
@@ -24,7 +27,11 @@ public class CountdownTimer : MonoBehaviour
         {
             _timeRemaining = 0f;
             _messageDisplayed = true;
-            Debug.Log("Time expired!");
         }
+    }
+
+    public void Reset()
+    {
+        _timeRemaining = TimerStart;
     }
 }
