@@ -1,1 +1,0 @@
-DEFAULT:Roads:Ground:Buildings:Other:

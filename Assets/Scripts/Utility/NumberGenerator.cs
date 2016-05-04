@@ -5,14 +5,13 @@ using System.Security.Cryptography;
 
 public class NumberGenerator : Singleton<NumberGenerator>
 {
-    private readonly int BufferSize;  // must be a multiple of 4
-    private byte[] RandomBuffer;
+    private readonly int BufferSize = 32768;  // must be a multiple of 4
+    private readonly byte[] RandomBuffer;
     private int BufferOffset;
-    private RNGCryptoServiceProvider rng;
+    private readonly RNGCryptoServiceProvider rng;
 
-	private NumberGenerator(int bufferSize = 32768)
+	private NumberGenerator()
     {
-        BufferSize = bufferSize;
         RandomBuffer = new byte[BufferSize];
         rng = new RNGCryptoServiceProvider();
         BufferOffset = RandomBuffer.Length;
